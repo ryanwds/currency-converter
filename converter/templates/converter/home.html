@@ -1,11 +1,21 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Currency Converter</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'javascript/home.js' %}"></script>
 </head>
 <body>
-    oi
+    <form method="POST">
+        {% csrf_token %}
+        <select name="from" id="currency_from"></select>
+        <select name="to" id="currency_to"></select>
+        <input type="number" name="amount" id="amount" placeholder="Valor" step="any">
+    </form>
+    <div id="result"></div>
 </body>
 </html>
