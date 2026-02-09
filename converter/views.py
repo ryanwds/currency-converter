@@ -1,8 +1,9 @@
-from django.shortcuts import render, HttpResponse
-from django.http import JsonResponse
-import json
-import requests
 from datetime import date
+import json
+from urllib.request import urlopen
+
+from django.http import JsonResponse
+from django.shortcuts import render, HttpResponse
 
 def converter(request):
     if request.method == 'POST':
@@ -13,9 +14,8 @@ def converter(request):
 
         access_key = '28807aceea1acfc131eafe663afdb3e8'
         url = f'https://api.exchangerate.host/convert?access_key={access_key}&from={currency_from}&to={currency_to}&amount={amount}&date={today}'
-        response = requests.get(url)
-        
-        data = response.json()
+        with urlopen(url) as response:
+            data = json.loads(response.read().decode("utf-8"))
         result = data['result']
         
         return JsonResponse({'result': result})

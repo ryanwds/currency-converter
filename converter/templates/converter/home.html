@@ -8,14 +8,38 @@
     <title>Currency Converter</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{% static 'javascript/home.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
 </head>
 <body>
-    <form method="POST">
-        {% csrf_token %}
-        <select name="from" id="currency_from"></select>
-        <select name="to" id="currency_to"></select>
-        <input type="number" name="amount" id="amount" placeholder="Valor" step="any">
-    </form>
-    <div id="result"></div>
+    <main class="page">
+        <div class="glow glow-primary" aria-hidden="true"></div>
+        <div class="glow glow-secondary" aria-hidden="true"></div>
+
+        <section class="card">
+            <header class="card__header">
+                <p class="eyebrow">Conversão instantânea</p>
+                <h1>Conversor de moedas</h1>
+                <p class="subtitle">Explore taxas com um visual moderno e direto ao ponto.</p>
+            </header>
+
+            <form method="POST" class="converter-form">
+                {% csrf_token %}
+                <label class="field">
+                    <span>Moeda de origem</span>
+                    <select name="from" id="currency_from"></select>
+                </label>
+                <label class="field">
+                    <span>Moeda de destino</span>
+                    <select name="to" id="currency_to"></select>
+                </label>
+                <label class="field">
+                    <span>Valor</span>
+                    <input type="number" name="amount" id="amount" placeholder="0,00" step="any">
+                </label>
+            </form>
+
+            <div id="result" class="result">Informe um valor para converter.</div>
+        </section>
+    </main>
 </body>
 </html>
