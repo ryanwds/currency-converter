@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap");
+
+:root {
+    color-scheme: dark;
+    --bg: #06070f;
+    --card-bg: rgba(16, 19, 34, 0.86);
+    --border: rgba(255, 255, 255, 0.08);
+    --primary: #5b7cfa;
+    --secondary: #17d6c6;
+    --text: #eef1ff;
+    --muted: #9aa0b7;
+    --glow: rgba(91, 124, 250, 0.35);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Manrope", system-ui, sans-serif;
+    color: var(--text);
+    background: radial-gradient(circle at top, rgba(91, 124, 250, 0.25), transparent 55%),
+        radial-gradient(circle at 20% 40%, rgba(23, 214, 198, 0.2), transparent 50%),
+        var(--bg);
+    min-height: 100vh;
+}
+
+.page {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    padding: 48px 20px;
+    overflow: hidden;
+}
+
+.glow {
+    position: absolute;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.7;
+    z-index: 0;
+}
+
+.glow-primary {
+    background: var(--glow);
+    top: -80px;
+    right: -120px;
+}
+
+.glow-secondary {
+    background: rgba(23, 214, 198, 0.3);
+    bottom: -120px;
+    left: -140px;
+}
+
+.card {
+    position: relative;
+    z-index: 1;
+    width: min(520px, 100%);
+    padding: 40px 36px 32px;
+    border-radius: 24px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 60px rgba(6, 7, 15, 0.6);
+    backdrop-filter: blur(18px);
+}
+
+.card__header {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 28px;
+}
+
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 12px;
+    color: var(--secondary);
+    font-weight: 700;
+}
+
+h1 {
+    margin: 0;
+    font-size: 32px;
+    line-height: 1.2;
+}
+
+.subtitle {
+    margin: 0;
+    color: var(--muted);
+    font-size: 15px;
+}
+
+.converter-form {
+    display: grid;
+    gap: 18px;
+}
+
+.field {
+    display: grid;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.field span {
+    font-weight: 600;
+}
+
+select,
+input {
+    width: 100%;
+    border-radius: 14px;
+    border: 1px solid transparent;
+    padding: 14px 16px;
+    background: rgba(9, 11, 24, 0.9);
+    color: var(--text);
+    font-size: 15px;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+select:focus,
+input:focus {
+    outline: none;
+    border-color: rgba(91, 124, 250, 0.6);
+    box-shadow: 0 0 0 3px rgba(91, 124, 250, 0.2);
+}
+
+#result {
+    margin-top: 24px;
+    padding: 16px 18px;
+    border-radius: 16px;
+    border: 1px solid rgba(23, 214, 198, 0.25);
+    background: rgba(13, 18, 32, 0.85);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    text-align: center;
+}
+
+@media (max-width: 540px) {
+    .card {
+        padding: 32px 24px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+}
